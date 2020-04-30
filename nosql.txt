@@ -1,5 +1,5 @@
 
-usar taller1 ; 
+usar taller_1 ; 
 db.createCollection("facultad", { fac_nom : "", fac_id : "" });
 db.createCollection("docente", { doc_id : "", doc_nom : "", doc_sal : 0,doc_fac_id:"" });
 db.createCollection("materia", { mat_id : "", mat_nom : "", mat_cre : "" });

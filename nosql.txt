@@ -1,0 +1,64 @@
+
+usar taller1 ; 
+db.createCollection("facultad", { fac_nom : "", fac_id : "" });
+db.createCollection("docente", { doc_id : "", doc_nom : "", doc_sal : 0,doc_fac_id:"" });
+db.createCollection("materia", { mat_id : "", mat_nom : "", mat_cre : "" });
+db.createCollection("estudiante", { est_id : "", est_nom : "", est_fech : date });
+
+const á MongoClient á require('mongodb'); 
+const stream á require('stream'); 
+
+función asincrona main() ? 
+    /**
+     * 
+     * 
+     */
+ const uri á "mongodb+srv://<nombre de usuario>:<contraseña><su-cluster-url>/test?retryWrites-true&w-majority"; 
+ metodo de seguimiento// activación 
+    await monitorListingsUsingStreamAPI(client);
+
+ const client á new MongoClient(uri); 
+
+ prueba la versión de la casa de 
+ conexion al cluster de mongoDB 
+        await client.connect();
+ introducción de datos 
+ const result0 á await client.db("taller1").collection("cliente").updateOne(a "cli_nom" : "Luz F" ? ); 
+ los documentos console.log('$-result.matchedCount) coincidieron con los criterios de consulta.'); 
+        
+       const result1 = await client.db("taller1").collection("provedor").insertOne({ "fac_nom" : "ingenierias" });
+       console.log(`New listing created with the following id: ${result.insertedId}`);
+       //liquidación de datos 
+       const result2 = await client.db("taller1").collection("tipo").deleteOne({ "mat_id" : "00"  });
+        
+    } finally {
+        // Cierre de la conexion con el cluster 
+        await client.close();
+    }
+       
+
+    
+  
+}
+
+
+función asincrona monitorListingsUsingStreamAPI(cliente, timeInMs a 60000, canalización á []) 
+    
+ colección const á client.db("taller1").collection("cliente"); 
+    
+ const changeStream á collection.watch(pipeline); 
+    
+    changeStream.pipe(
+ nueva corriente. Grabable (o Escribir) 
+          objectMode: true,
+ write: function (doc, _, cb) ? 
+              console.log(doc);
+              cb();
+          }
+       })
+);
+    await closeChangeStream(timeInMs, changeStream);
+}
+
+
+main().catch(console.error);
